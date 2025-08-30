@@ -13,3 +13,25 @@ print(fish)
 
 fish.remove('kissing gourami')
 print(fish)
+
+print(fish.pop(3))
+print(fish)
+
+print(fish.index('herring'))
+
+fish_2 =fish.copy()
+print(fish_2)
+
+fish.reverse()
+print(fish)
+
+print(fish.count('goby'))
+
+
+fish_ages = [1, 2, 4, 3, 2, 1, 1, 2]
+print(fish_ages)
+fish_ages.sort()
+print(fish_ages)
+
+fish.clear()
+print(fish)
