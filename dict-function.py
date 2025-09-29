@@ -11,3 +11,18 @@ print(sammy.values())
 
 for key, value in sammy.items():
     print(key, value)
+
+sammy.update({'color': 'red'})
+print(sammy) 
+
+sammy.update({'color': 'green'})
+print(sammy)
+
+del sammy['color']
+print(sammy)
+
+sammy.clear()
+print(sammy)
+
+del sammy
+#print(sammy)
