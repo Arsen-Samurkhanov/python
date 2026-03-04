@@ -1,9 +1,13 @@
 from flask import Flask, Response
 import prometheus_client
+import time
+import random
 
 REQUEST = prometheus_client.Counter(
     'request', 'Aplication request count', ['endpoint']
 )
+
+TIMER = prometheus_client.Histogram('slow', 'Slow Requests', ['endpoint'])
 
 app = Flask('__name__')
 
@@ -18,6 +22,12 @@ def metrics():
 def index():
     REQUEST.labels(endpoint = '/').inc()
     return '<h1>Development Prometheus-backed App</h1>'
+
+@app.route('/database/')
+def database():
+    with TIMER.labels('/database').time():
+        time.sleep(random.uniform(1, 3))
+    return '<h1>Completed expensive database operation</h1>'    
 
 
 if __name__ == "__main__":
